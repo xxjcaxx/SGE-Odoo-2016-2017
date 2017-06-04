@@ -1,0 +1,127 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    
+     <record model="ir.ui.view" id="trans_m.ships_tree">
+      <field name="name">Ships</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <tree colors="blue:travelling==True">
+          <field name="name"/>
+          <field name="is_ship"/>
+          <field name="maxim_containers"/>
+          <field name="travels"/>
+          <field name="travelling" invisible="1"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="trans_m.ships_form">
+      <field name="name">Ships</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+                <field name="photo" widget="image" class="oe_avatar"/> 
+          	<field name="name"/>
+             <field name="is_ship"/>
+          	<field name="maxim_containers"/>
+          	<field name="travels"/>
+          	<field name="travelling" invisible="1"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="trans_m.ships_kanban">
+      <field name="name">Ships</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <field name="photo" widget="image" class="oe_avatar"/>
+          <field name="name"/>
+           <field name="is_ship"/>
+          <field name="maxim_containers"/>
+          <field name="travels"/>
+          <field name="travelling" invisible="1"/>
+          <templates>
+              <t t-name="kanban-box">
+                   <div>
+                      <a type="open" >
+                        <img class="oe_kanban_image" style="width: 60px;height:60px;" t-att-src="kanban_image('trans_m.ship', 'photo', record.id.value)" />
+                      </a>
+                      <h4>
+		       <a type="edit">
+			<field name="name"/>
+                       </a>
+                      </h4>
+                      <h4>
+                        <a type="edit">
+                          <field name="maxim_containers"/>
+                        </a>
+                      </h4>
+                   </div>
+              </t>
+	  </templates>
+        </kanban>
+      </field>
+    </record>
+
+<record model="ir.ui.view" id="view_ships_default_search">
+      <field name="name">Ships</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <search>
+          <filter name="ships" string="Is Ship" domain="[('is_ship', '=', True)]"/>
+          <group string="Group By:">
+             <filter name="name" string="Proveedor" context="{'group_by':'name'}"/>
+          </group>
+        </search>
+      </field>
+    </record> 
+<!-- Vista para Proveedores le añadimos las particularidades del ship -->
+     <record model="ir.ui.view" id="proveedores_form">
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="name">Proveedores</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        
+           <xpath expr="//page[@name='internal_notes']" position="after">
+               <page string="Ships">
+                  <group>
+                    <field name="name"/>
+                     <field name="is_ship"/>
+                  	<field name="maxim_containers"/>
+                  </group>
+                  <group>
+                  	<field name="travels"/>
+                  	<field name="travelling" invisible="1"/>
+                  </group>
+               </page>
+           </xpath> 
+           
+      </field>
+    </record>  
+<!-- search heredado -->
+      <record model="ir.ui.view" id="view_ships_default_search"> 
+      <field name="name">Ships</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_res_partner_filter" />
+      <field name="arch" type="xml"> 
+       <!-- add your filtre at the end -->
+             <xpath expr="filter[@name='customer']"
+                position="after">
+                 <filter name="is_ship" string="Is Ship" domain="[('is_ship', '=', True)]"/>
+                
+            </xpath> 
+        <!-- groups-->
+            <!-- <xpath expr="//filter[@name='customer']"
+                position="after">  
+                
+            </xpath> -->
+        
+      </field>
+    </record> 
+
+  </data>
+</openerp>

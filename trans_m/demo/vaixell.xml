@@ -1,0 +1,87 @@
+
+<openerp><data>
+<record id="b0" model="trans_m.ship">
+<field name="name">b0</field>
+<field name="maxim_containers">2137</field>
+</record>
+<record id="b1" model="trans_m.ship">
+<field name="name">b1</field>
+<field name="maxim_containers">1889</field>
+</record>
+<record id="b2" model="trans_m.ship">
+<field name="name">b2</field>
+<field name="maxim_containers">5194</field>
+</record>
+<record id="b3" model="trans_m.ship">
+<field name="name">b3</field>
+<field name="maxim_containers">1224</field>
+</record>
+<record id="b4" model="trans_m.ship">
+<field name="name">b4</field>
+<field name="maxim_containers">6188</field>
+</record>
+<record id="b5" model="trans_m.ship">
+<field name="name">b5</field>
+<field name="maxim_containers">2017</field>
+</record>
+<record id="b6" model="trans_m.ship">
+<field name="name">b6</field>
+<field name="maxim_containers">6242</field>
+</record>
+<record id="b7" model="trans_m.ship">
+<field name="name">b7</field>
+<field name="maxim_containers">5270</field>
+</record>
+<record id="b8" model="trans_m.ship">
+<field name="name">b8</field>
+<field name="maxim_containers">3268</field>
+</record>
+<record id="b9" model="trans_m.ship">
+<field name="name">b9</field>
+<field name="maxim_containers">7258</field>
+</record>
+<record id="b10" model="trans_m.ship">
+<field name="name">b10</field>
+<field name="maxim_containers">3666</field>
+</record>
+<record id="b11" model="trans_m.ship">
+<field name="name">b11</field>
+<field name="maxim_containers">3623</field>
+</record>
+<record id="b12" model="trans_m.ship">
+<field name="name">b12</field>
+<field name="maxim_containers">2241</field>
+</record>
+<record id="b13" model="trans_m.ship">
+<field name="name">b13</field>
+<field name="maxim_containers">9322</field>
+</record>
+<record id="b14" model="trans_m.ship">
+<field name="name">b14</field>
+<field name="maxim_containers">10766</field>
+</record>
+<record id="b15" model="trans_m.ship">
+<field name="name">b15</field>
+<field name="maxim_containers">9135</field>
+</record>
+<record id="b16" model="trans_m.ship">
+<field name="name">b16</field>
+<field name="maxim_containers">10733</field>
+</record>
+<record id="b17" model="trans_m.ship">
+<field name="name">b17</field>
+<field name="maxim_containers">7337</field>
+</record>
+<record id="b18" model="trans_m.ship">
+<field name="name">b18</field>
+<field name="maxim_containers">3432</field>
+</record>
+<record id="b19" model="trans_m.ship">
+<field name="name">b19</field>
+<field name="maxim_containers">9211</field>
+</record>
+<record id="b20" model="trans_m.ship">
+<field name="name">b20</field>
+<field name="maxim_containers">2047</field>
+</record>
+</data></openerp>

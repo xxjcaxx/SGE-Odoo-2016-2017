@@ -1,0 +1,193 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    
+     <record model="ir.ui.view" id="trans_m.travels_tree">
+      <field name="name">Travels</field>
+      <field name="priority" >20</field>
+      <field name="model">purchase.order</field>
+      <field name="arch" type="xml">
+        <tree colors="red:ready==True">
+          <field name="name"/>
+          <field name="city_origin"/>
+          <field name="destination"/>
+          <field name="in_travel" invisible="1"/> 
+          <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+          <field name="ship"/>
+          <field name="total_weight"/>
+          <field name="origin_date"/>
+          <field name="destination_date"/>
+          <field name="orders"/> 
+          <field name="loading_progress" widget="progressbar" style="width:150px; height: 60px;" />
+          <field name="ready" invisible="1" />
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="trans_m.travels_form">
+      <field name="name">Travels</field>
+       <field name="priority" eval="30"/>
+      <field name="model">purchase.order</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Basic Data">
+                <field name="name"/>
+          	<field name="city_origin"/>
+          	<field name="destination"/>
+            </group>
+           <notebook>
+           
+            <page string="Ship">
+            <group>
+                <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+          	<field name="ship"/>
+          	<field name="total_weight"/>
+                <field name="origin_date"/>
+                <field name="destination_date"/>
+          </group>
+           </page>
+           <page string="Orders">
+            <group>
+              
+            <field name="orders">
+              
+            </field> 
+                 <field name="loading_progress" />
+                 <button name="depart" type="object" string="Convert all the containers to ready" class="oe_highlight" /> 
+           </group>
+           <group>
+              
+            <field name="containers">
+               <tree>
+		   <field name="name"/>
+		   <field name="order_id"/> 
+		   <field name="tipe"/>
+		   <field name="price_unit"/>
+		  <field name="weight"/>
+		  <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+		  <field name="ready"/>
+		  
+              </tree>
+            </field>
+            
+           </group> 
+	   <group>
+              
+            <field name="containers_nr" string="Containers not ready">
+               <tree>
+		   <field name="name"/>
+		   <field name="order_id"/> 
+		   <field name="tipe"/>
+		   <field name="price_unit"/>
+		  <field name="weight"/>
+		  <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+		  <field name="ready"/>
+		  
+              </tree>
+            </field>
+            
+           </group> 
+           <group>
+                                      <!-- domain="[('travel','=','id')]" -->
+                <field mode="graph" name="registros" domain="[('travel','=',id)]">
+                    <graph type="line" string="Progreso">
+                       <field name="date" interval="day"/>
+                       <field name="progress" type="measure"/>
+                    </graph>
+                </field>
+           </group>
+           </page>
+          </notebook>
+        </sheet>
+       </form>
+      </field>
+    </record>
+
+     <record model="ir.ui.view" id="trans_m.travels_calendar">
+            <field name="name">Travels</field>
+            <field name="model">purchase.order</field>
+            <field name="arch" type="xml">
+                <calendar string="Session Calendar" date_start="origin_date"
+                          date_stop="destination_date"
+                          color="name">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+    <record model="ir.ui.view" id="view_travels_default_search">
+         <field name="name">Travel search</field>
+         <field name="model">purchase.order</field>
+         <field name="arch" type="xml">
+            <search>
+              <field name="name"/>
+              <field name="ship"/> 
+              <filter name="in_travel" domain="[('in_travel', '=', True)]"/>
+              <filter name="finished" string="Finished travels or not started yet" domain="[('in_travel', '=', False)]"/>
+              <group string="Group By:">
+                <filter name="ship" string="Proveedores" context="{'group_by':'ship'}"/>
+              </group>
+            </search>
+       </field>
+    </record>
+
+<!-- Vista para Presupuestos le añadimos las particularidades del viaje -->
+     <record model="ir.ui.view" id="pedidos_compra_form">
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
+      <field name="name">Pedidos</field>
+      <field name="model">purchase.order</field>
+      <field name="arch" type="xml">
+        
+           <xpath expr="//notebook" position="inside">
+               <page string="Travel">
+                    <group>
+                      <field name="name"/>
+                      <field name="city_origin"/>
+                      <field name="destination"/>
+                      <field name="in_travel" invisible="1"/> 
+                      <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+                      <field name="ship"/>
+                      <field name="total_weight"/>
+                      <field name="origin_date"/>
+                      <field name="destination_date"/>
+                    </group>
+                    <group>
+                      <field name="orders"/>  
+                      <field name="loading_progress" widget="progressbar" style="width:150px; height: 60px;" />
+                      <field name="ready" invisible="1" />
+                    </group>
+
+                    
+               </page>
+           </xpath> 
+           
+           
+      </field>
+    </record>   
+<!-- search heredado -->
+      <record model="ir.ui.view" id="view_travels_default_search"> 
+      <field name="name">Travels</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.view_purchase_order_filter" />
+      <field name="arch" type="xml"> 
+       <!-- add your filtre at the end -->
+             <xpath expr="field[@name='product_id']"
+                position="before">
+                 <field name="name"/>
+              <field name="ship"/> 
+              <filter name="in_travel" domain="[('in_travel', '=', True)]"/>
+              <filter name="finished" string="Finished travels or not started yet" domain="[('in_travel', '=', False)]"/>
+              <filter name="ship" string="Proveedores" context="{'group_by':'ship'}"/>
+            </xpath> 
+        <!-- groups-->
+            <!-- <xpath expr="//filter[@name='customer']"
+                position="after">  
+                <filter name="ship" string="Proveedores" context="{'group_by':'ship'}"/>
+            </xpath> -->
+        
+      </field>
+    </record> 
+
+
+  </data>
+</openerp>

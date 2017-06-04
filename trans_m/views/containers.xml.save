@@ -1,0 +1,121 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="trans_m.containers">
+      <field name="name">Containers</field>
+      <field name="model">trans_m.container</field>
+      <field name="arch" type="xml">
+        <tree colors="yellow:progress!=100.00;red:paid==False;green:ready==True" >
+           <field name="name"/>
+           <field name="tipe"/>
+           <field name="price"/>
+          <field name="description"/>
+          <field name="paid"/>
+          <field name="weight"/>
+          <field name="receiver"/>
+          <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+          <field name="client"/>
+          <field name="ready"/>
+          <field name="travel"/>
+        </tree>
+      </field>
+    </record>
+    
+w" id="trans_m.ships">
+      <field name="name">Ships</field>
+      <field name="model">trans_m.ship</field>
+      <field name="arch" type="xml">
+        <tree colors="blue:travelling==True">
+          <field name="name"/>
+          <field name="maxim_containers"/>
+          <field name="travels"/>
+          <field name="travelling" invisible="1"/>
+        </tree>
+      </field>
+    </record>
+
+     <record model="ir.ui.view" id="trans_m.travels">
+      <field name="name">Travels</field>
+      <field name="model">trans_m.travel</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="origin"/>
+          <field name="destination"/>
+          <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+          <field name="ship"/>
+          <field name="total_weight"/>
+          <field name="containers"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="view_travels_default_search">
+         <field name="name">trans_m.travel.search</field>
+         <field name="model">trans_m.travel</field>
+         <field name="arch" type="xml">
+            <search>
+              <field name="name"/>
+              <field name="ship"/> 
+              <filter name="progress" domain="[('progress', '=', 100)]"/>
+            </search>
+       </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="trans_m.action_container">
+      <field name="name">Containers</field>
+      <field name="res_model">trans_m.container</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="trans_m.action_ships">
+      <field name="name">Ships</field>
+      <field name="res_model">trans_m.ship</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="trans_m.action_travels">
+      <field name="name">Travels</field>
+      <field name="res_model">trans_m.travel</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'search_default_progress':1}</field>
+    </record>
+    
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="trans_m.action_server">
+      <field name="name">transM server</field>
+      <field name="model_id" ref="model_trans_m_trans_m"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Containers" id="trans_m.menu_root"/>
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Containers" id="trans_m.menu_1" parent="trans_m.menu_root"/>
+    
+    <!-- actions -->
+    
+    <menuitem name="Containers" id="trans_m.menu_1_containers" parent="trans_m.menu_1"
+              action="trans_m.action_container"/>
+    <menuitem name="Ships" id="trans_m.menu_1_ships" parent="trans_m.menu_1"
+              action="trans_m.action_ships"/>
+    <menuitem name="Travels" id="trans_m.menu_1_travels" parent="trans_m.menu_1"
+              action="trans_m.action_travels"/>
+    <!--
+    <menuitem name="Server to list" id="trans_m" parent="trans_m.menu_2"
+              action="trans_m.action_server"/>
+    -->
+  </data>
+</openerp>

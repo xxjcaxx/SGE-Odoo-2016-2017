@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_trans_m_trans_m,trans_m.trans_m,model_trans_m_trans_m,,1,0,0,0

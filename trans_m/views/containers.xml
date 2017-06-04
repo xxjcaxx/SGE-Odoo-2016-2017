@@ -1,0 +1,126 @@
+ <openerp>
+  <data>
+    <!-- explicit list view definition -->
+    
+     <record model="ir.ui.view" id="trans_m.containers_tree">
+      <field name="name">Containers</field>
+      <field name="priority" >20</field>
+      <field name="model">sale.order.line</field>
+      <field name="arch" type="xml">
+        <tree colors="green:ready==True;blue:progress!=100.00;red:paid==False" >
+           <field name="name"/>
+           <field name="product_id" />
+           <field name="order_id"/> 
+           <field name="tipe"/>
+           <field name="price_unit"/>
+          <field name="is_container"/>
+          <field name="description"/>
+          <field name="weight"/>
+          <field name="receiver"/>
+          <field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+          <field name="client"/>
+          <field name="ready"/>
+          <field name="travel"/>
+        </tree>
+      </field>
+    </record>  
+
+    <record model="ir.ui.view" id="trans_m.containers_form">
+      <field name="name">Containers</field>
+      <field name="priority" >20</field>
+      <field name="model">sale.order.line</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Basic Data">
+           	<field name="name"/>
+            <field name="product_id" domain="[('name','ilike','container')]"/>
+            <field name="order_id"/>
+           	<field name="tipe"/>
+            <field name="price_unit"/>
+            <field name="is_container"/>
+          	<field name="description"/>
+                <field name="weight"/>
+	    </group>
+	   <notebook>
+            <page string="Process">
+            <group>
+          	<field name="ready"/>
+           	<field name="progress" widget="progressbar" style="width:150px; height: 60px;"/>
+           </group>
+           </page>
+           <page string="Client">
+            <group>
+          	<field name="client"/>
+                <field name="receiver"/>
+          	<field name="travel"/>
+           </group>
+	   </page>
+          </notebook>
+        </sheet>
+       </form>
+      </field>
+    </record>  
+<!-- search heredado -->
+      <record model="ir.ui.view" id="view_containers_default_search"> 
+      <field name="name">Containers</field>
+      <field name="model">sale.order.line</field>
+      <field name="inherit_id" ref="sale.view_sales_order_line_filter" />
+      <field name="arch" type="xml"> 
+       <!-- add your filtre at the end -->
+             <xpath expr="field[@name='order_id']"
+                position="before">
+                 <filter name="full" string="Full" domain="[('progress', '=', 100)]"/>
+                <filter name="not_full" string="Not full" domain="[('progress', '&lt;', 100)]"/>
+                <filter name="containers" string="Is container" domain="[('is_container', '=', True)]"/>
+                <filter name="client" string="By Travels" context="{'group_by':'client'}"/>
+            </xpath> 
+        <!-- groups-->
+            <!-- <xpath expr="//filter[@name='customer']"
+                position="after">  
+                
+            </xpath> -->
+        
+      </field>
+    </record> 
+<!-- Vista para Presupuestos le añadimos las particularidades del container -->
+     <record model="ir.ui.view" id="presupuestos_form_order_line">
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="name">Presupuestos</field>
+      <field name="model">sale.order</field>
+      <field name="arch" type="xml">
+        
+           <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="before">
+               <field name="receiver"/>
+               <field name="is_container"/>
+               <field name="tipe"/>
+               <field name="weight"/>
+           </xpath> 
+           <xpath expr="//field[@name='partner_id']" position="after">
+               <field name="travel" />
+           </xpath> 
+           
+      </field>
+    </record> 
+<!-- Vista para Factura le añadimos las particularidades del container -->
+     <record model="ir.ui.view" id="facturas_form_order_line">
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="name">Facturas</field>
+      <field name="model">account.invoice</field>
+      <field name="arch" type="xml">
+        
+           <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="before">
+               <field name="receiver"/>
+               <field name="is_container"/>
+               <field name="tipe"/>
+               <field name="weight"/>
+           </xpath> 
+           <xpath expr="//field[@name='partner_id']" position="after">
+               <field name="travel" />
+           </xpath> 
+           
+      </field>
+    </record>    
+
+  </data>
+</openerp> 
