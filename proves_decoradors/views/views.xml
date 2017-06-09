@@ -1,0 +1,32 @@
+<openerp>
+  <data>
+
+	<record model="ir.ui.view" id="proves_decoradors.tree_view">
+            <field name="name">provesd.tree</field>
+            <field name="model">proves_decoradors.proves_decoradors</field>
+            <field name="arch" type="xml">
+              <tree>
+                <field name="name"/>
+                <field name="value"/>
+                <field name="valuedepends"/>
+                <field name="valuemulti"/>
+                <field name="valueone"/>
+                <field name="valuemodel"/>
+              </tree>
+            </field>
+          </record>
+
+    <record model="ir.actions.act_window" id="proves_decoradors.action_window">
+      <field name="name">proves_decoradors window</field>
+      <field name="res_model">proves_decoradors.proves_decoradors</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="proves_decoradors" id="proves_decoradors.menu_root"/>
+    <menuitem name="Menu 1" id="proves_decoradors.menu_1" parent="proves_decoradors.menu_root"/>
+    <menuitem name="Menu 2" id="proves_decoradors.menu_2" parent="proves_decoradors.menu_root"/>
+    <menuitem name="List" id="proves_decoradors.menu_1_list" parent="proves_decoradors.menu_1"
+              action="proves_decoradors.action_window"/>
+    -->
+  </data>
+</openerp>
