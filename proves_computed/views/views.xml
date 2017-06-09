@@ -1,0 +1,73 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="proves_computed.list">
+      <field name="name">proves_computed list</field>
+      <field name="model">proves_computed.proves_computed</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="computedfloat"/>
+          <field name="computedchar"/>
+          <field name="computedm2o"/>
+          <field name="computedm2m"/>
+          <field name="computeddate"/>
+          <field name="computeddatetime"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="proves_computed.form">
+      <field name="name">proves_computed form</field>
+      <field name="model">proves_computed.proves_computed</field>
+      <field name="arch" type="xml">
+        <form><sheet>
+         <group>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="computedfloat"/>
+          <field name="computedchar"/>
+          <field name="computedm2o"/>
+          <field name="computedm2m" widget="many2many_tags"/>
+          <field name="computeddate"/>
+          <field name="computeddatetime"/>
+          <field name="image" widget="image"/>
+          <field name="medium_image" widget="image"/>
+          <field name="small_image" widget="image"/>
+	</group>
+       </sheet> </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="proves_computed.action_window">
+      <field name="name">proves_computed window</field>
+      <field name="res_model">proves_computed.proves_computed</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="proves_computed.action_server">
+      <field name="name">proves_computed server</field>
+      <field name="model_id" ref="model_proves_computed_proves_computed"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <menuitem name="proves_computed" id="proves_computed.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="proves_computed.menu_1" parent="proves_computed.menu_root"/>
+    <menuitem name="Menu 2" id="proves_computed.menu_2" parent="proves_computed.menu_root"/>
+    <!-- actions -->
+    <menuitem name="List" id="proves_computed.menu_1_list" parent="proves_computed.menu_1"
+              action="proves_computed.action_window"/>
+  </data>
+</openerp>

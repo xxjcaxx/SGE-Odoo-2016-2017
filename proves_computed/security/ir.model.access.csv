@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_proves_computed_proves_computed,proves_computed.proves_computed,model_proves_computed_proves_computed,,1,0,0,0

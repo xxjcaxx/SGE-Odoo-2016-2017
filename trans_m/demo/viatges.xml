@@ -1,0 +1,129 @@
+
+<openerp><data>
+<record id="v0" model="trans_m.travel">
+<field name="name">v0</field>
+<field name="origin">76</field>
+<field name="destination">173</field>
+<field name="ship" ref="b4"></field>
+</record>
+<record id="v1" model="trans_m.travel">
+<field name="name">v1</field>
+<field name="origin">176</field>
+<field name="destination">89</field>
+<field name="ship" ref="b3"></field>
+</record>
+<record id="v2" model="trans_m.travel">
+<field name="name">v2</field>
+<field name="origin">71</field>
+<field name="destination">185</field>
+<field name="ship" ref="b16"></field>
+</record>
+<record id="v3" model="trans_m.travel">
+<field name="name">v3</field>
+<field name="origin">60</field>
+<field name="destination">106</field>
+<field name="ship" ref="b19"></field>
+</record>
+<record id="v4" model="trans_m.travel">
+<field name="name">v4</field>
+<field name="origin">14</field>
+<field name="destination">126</field>
+<field name="ship" ref="b10"></field>
+</record>
+<record id="v5" model="trans_m.travel">
+<field name="name">v5</field>
+<field name="origin">185</field>
+<field name="destination">226</field>
+<field name="ship" ref="b7"></field>
+</record>
+<record id="v6" model="trans_m.travel">
+<field name="name">v6</field>
+<field name="origin">44</field>
+<field name="destination">209</field>
+<field name="ship" ref="b4"></field>
+</record>
+<record id="v7" model="trans_m.travel">
+<field name="name">v7</field>
+<field name="origin">225</field>
+<field name="destination">31</field>
+<field name="ship" ref="b2"></field>
+</record>
+<record id="v8" model="trans_m.travel">
+<field name="name">v8</field>
+<field name="origin">181</field>
+<field name="destination">194</field>
+<field name="ship" ref="b10"></field>
+</record>
+<record id="v9" model="trans_m.travel">
+<field name="name">v9</field>
+<field name="origin">57</field>
+<field name="destination">171</field>
+<field name="ship" ref="b15"></field>
+</record>
+<record id="v10" model="trans_m.travel">
+<field name="name">v10</field>
+<field name="origin">32</field>
+<field name="destination">245</field>
+<field name="ship" ref="b12"></field>
+</record>
+<record id="v11" model="trans_m.travel">
+<field name="name">v11</field>
+<field name="origin">58</field>
+<field name="destination">177</field>
+<field name="ship" ref="b2"></field>
+</record>
+<record id="v12" model="trans_m.travel">
+<field name="name">v12</field>
+<field name="origin">13</field>
+<field name="destination">69</field>
+<field name="ship" ref="b5"></field>
+</record>
+<record id="v13" model="trans_m.travel">
+<field name="name">v13</field>
+<field name="origin">188</field>
+<field name="destination">174</field>
+<field name="ship" ref="b10"></field>
+</record>
+<record id="v14" model="trans_m.travel">
+<field name="name">v14</field>
+<field name="origin">92</field>
+<field name="destination">155</field>
+<field name="ship" ref="b5"></field>
+</record>
+<record id="v15" model="trans_m.travel">
+<field name="name">v15</field>
+<field name="origin">124</field>
+<field name="destination">223</field>
+<field name="ship" ref="b14"></field>
+</record>
+<record id="v16" model="trans_m.travel">
+<field name="name">v16</field>
+<field name="origin">56</field>
+<field name="destination">123</field>
+<field name="ship" ref="b9"></field>
+</record>
+<record id="v17" model="trans_m.travel">
+<field name="name">v17</field>
+<field name="origin">178</field>
+<field name="destination">157</field>
+<field name="ship" ref="b9"></field>
+</record>
+<record id="v18" model="trans_m.travel">
+<field name="name">v18</field>
+<field name="origin">61</field>
+<field name="destination">252</field>
+<field name="ship" ref="b13"></field>
+</record>
+<record id="v19" model="trans_m.travel">
+<field name="name">v19</field>
+<field name="origin">120</field>
+<field name="destination">139</field>
+<field name="ship" ref="b2"></field>
+</record>
+<record id="v20" model="trans_m.travel">
+<field name="name">v20</field>
+<field name="origin">238</field>
+<field name="destination">108</field>
+<field name="ship" ref="b15"></field>
+</record>
+</data></openerp>

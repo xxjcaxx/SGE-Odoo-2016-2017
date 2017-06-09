@@ -1,0 +1,132 @@
+<openerp>
+  <data>
+  
+    <!-- actions Container -->
+    
+    <record model="ir.actions.act_window" id="trans_m.action_container">  
+      <field name="name">Containers</field>
+      <field name="res_model">sale.order.line</field>
+      <field name="view_mode">tree,form</field> 
+      <field name="context">{'search_default_containers':1,"default_is_container": True}</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="trans_m.action_container_tree">
+     <field name="name">Containers tree</field>
+      <field name="res_model">sale.order.line</field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="trans_m.containers_tree"/>
+      <field name="act_window_id" ref="trans_m.action_container"/>
+    </record> 
+    <record model="ir.actions.act_window.view" id="trans_m.action_container_form">
+     <field name="name">Containers form</field>
+      <field name="res_model">sale.order.line</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="trans_m.containers_form"/>
+      <field name="act_window_id" ref="trans_m.action_container"/>
+    </record>
+ <!-- actions Ship -->
+    <record model="ir.actions.act_window" id="trans_m.action_ships">
+      <field name="name">Ships</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree,form,kanban</field>
+      <field name="context">{'search_default_ships':1,"default_is_ship": True}</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="trans_m.action_ship_tree">
+     <field name="name">Ship tree</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="trans_m.ships_tree"/>
+      <field name="act_window_id" ref="trans_m.action_ships"/>
+    </record>
+
+<record model="ir.actions.act_window.view" id="trans_m.action_ship_form">
+     <field name="name">Ship form</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="trans_m.ships_form"/>
+      <field name="act_window_id" ref="trans_m.action_ships"/>
+    </record>
+
+<record model="ir.actions.act_window.view" id="trans_m.action_ship_kanban">
+     <field name="name">Ship kanban</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_mode">kanban</field>
+      <field name="view_id" ref="trans_m.ships_kanban"/>
+      <field name="act_window_id" ref="trans_m.action_ships"/>
+    </record>
+<!-- actions Travel -->
+    <record model="ir.actions.act_window" id="trans_m.action_travels">
+      <field name="name">Travels</field>
+      <field name="res_model">purchase.order</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="context">{'search_default_in_travel':1}</field>
+    </record>
+    <record model="ir.actions.act_window.view" id="trans_m.action_travel_tree">
+     <field name="name">Travels tree</field>
+      <field name="res_model">purchase.order</field>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="trans_m.travels_tree"/>
+      <field name="act_window_id" ref="trans_m.action_travels"/>
+    </record> 
+    <record model="ir.actions.act_window.view" id="trans_m.action_travel_form">
+     <field name="name">Travels form</field>
+      <field name="res_model">purchase.order</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="trans_m.travels_form"/>
+      <field name="act_window_id" ref="trans_m.action_travels"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="trans_m.action_travel_calendar">
+     <field name="name">Travels Calendar</field>
+      <field name="res_model">purchase.order</field>
+      <field name="view_mode">calendar</field>
+      <field name="view_id" ref="trans_m.travels_calendar"/>
+      <field name="act_window_id" ref="trans_m.action_travels"/>
+    </record>
+
+       <!-- Action Registros-->
+     <record model="ir.actions.act_window" id="trans_m.action_registros">
+      <field name="name">Registros</field>
+      <field name="res_model">trans_m.registro</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="trans_m.action_server">
+      <field name="name">transM server</field>
+      <field name="model_id" ref="model_trans_m_trans_m"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    
+    <menuitem name="Containers" id="trans_m.menu_root"/>
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Containers" id="trans_m.menu_1" parent="trans_m.menu_root"/>
+    
+    <!-- actions -->
+    
+    <menuitem name="Containers" id="trans_m.menu_1_containers" parent="trans_m.menu_1"
+              action="trans_m.action_container"/>
+    <menuitem name="Ships" id="trans_m.menu_1_ships" parent="trans_m.menu_1"
+              action="trans_m.action_ships"/>
+    <menuitem name="Travels" id="trans_m.menu_1_travels" parent="trans_m.menu_1"
+              action="trans_m.action_travels"/>
+    <menuitem name="Registros" id="trans_m.menu_1_registros" parent="trans_m.menu_1"
+              action="trans_m.action_registros"/>
+    <!--
+    <menuitem name="Server to list" id="trans_m" parent="trans_m.menu_2"
+              action="trans_m.action_server"/>
+    -->
+  </data>
+</openerp>
