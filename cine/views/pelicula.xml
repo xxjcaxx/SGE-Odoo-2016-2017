@@ -1,0 +1,92 @@
+<openerp>
+  <data>
+
+ <record model="ir.ui.view" id="cine.pelicula_form_view">
+            <field name="name">pelicula.form</field>
+            <field name="model">cine.pelicula</field>
+            <field name="arch" type="xml">
+              <form string="Cine Form">
+                <sheet>
+                  <notebook>
+                    <page string="Data">
+                      <group string="Main Data">
+                        <field name="poster" widget="image" class="oe_avatar" />
+                        <field name="name"/>
+                        <field name="director"/>
+                        <field name="duracio"/>
+                        <field name="estreno"/>
+                      </group>
+                    </page>
+                    <page string="Sessions">
+                      <group string="Projections">
+                        <field name="preu"/>
+                        <field name="sessions" context="{'default_pelicula':active_id}"/>
+                        <field name="encartell"/>
+                        <field name="encartell2" invisible="True"/>
+                      </group>
+                      </page>
+                    </notebook>
+                  </sheet>
+                </form>
+              </field>
+            </record>
+ <record model="ir.ui.view" id="cine.pelicula_tree_view">
+            <field name="name">pelicula.tree</field>
+            <field name="model">cine.pelicula</field>
+            <field name="arch" type="xml">
+              <tree>
+                        <field name="name"/>
+                        <field name="director"/>
+                        <field name="estreno"/>
+                        <field name="duracio"/>
+                        <field name="preu"/>
+                        <field name="sessions"/>
+                        <field name="encartell"/>
+                        <field name="encartell2" invisible="True"/>
+                </tree>
+              </field>
+            </record>
+ <record model="ir.ui.view" id="cine.pelicula_kanban_view">
+            <field name="name">pelicula.kanban</field>
+            <field name="model">cine.pelicula</field>
+            <field name="arch" type="xml">
+              <kanban>
+ 		<templates>
+                  <t t-name="kanban-box">
+                    <div  t-attf-class="">
+                                <a type="open">
+                                    <img class="oe_kanban_image" t-att-src="kanban_image('cine.pelicula', 'poster', record.id.value)" style="width:200px;"/>
+                                </a>
+                                <div t-attf-class="oe_kanban_content">
+                                    <h4>
+                                        <a type="edit">
+                                            <field name="name"></field>
+                        <field name="encartell"/>
+                                        </a>
+                                    </h4>
+                                    <ul>
+ 
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+              </kanban>
+              </field>
+            </record>
+ <record model="ir.ui.view" id="cine.pelicula_search_view">
+            <field name="name">pelicula.search</field>
+            <field name="model">cine.pelicula</field>
+            <field name="arch" type="xml">
+              <search>
+                        <field name="name"/>
+                        <field name="director"/>
+                        <field name="estreno"/>
+                        <field name="preu"/>
+                        <filter name="cartell" string="In billboard" domain="[('encartell','=',True)]"/>
+                </search>
+              </field>
+            </record>
+  </data>
+</openerp>

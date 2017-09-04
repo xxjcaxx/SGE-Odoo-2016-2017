@@ -1,0 +1,79 @@
+<openerp>
+  <data>
+
+ <record model="ir.ui.view" id="cine.sessio_form_view">
+            <field name="name">sessio.form</field>
+            <field name="model">cine.sessio</field>
+            <field name="arch" type="xml">
+              <form string="Cine Form">
+                <sheet>
+                  <notebook>
+                    <page string="Data">
+                      <group string="Main Data">
+                        <field name="name"/>
+                        <field name="cine" class="oe_edit_only"/>
+                        <field name="sala"/>
+                        <field name="hora"/>
+                        <field name="dia"/>
+                        <field name="pelicula"/>
+                        <field name="duracio"/>
+                      </group>
+                     </page>
+                    <page string="Tickets">
+                      <group string="Ticket List">
+                        <field name="entrades" context="{'default_sessio':active_id}"/>
+
+                        <field name="projeccio"/>
+                        <field name="percent_projeccio"/>
+                      </group>
+                    </page>
+                    </notebook>
+                  </sheet>
+                </form>
+              </field>
+            </record>
+ <record model="ir.ui.view" id="cine.sessio_tree_view">
+            <field name="name">sessio.tree</field>
+            <field name="model">cine.sessio</field>
+            <field name="arch" type="xml">
+              <tree>
+                        <field name="name"/>
+                        <field name="sala"/>
+                        <field name="hora"/>
+                        <field name="dia"/>
+                        <field name="pelicula"/>
+                        <field name="duracio"/>
+                        <field name="projeccio"/>
+                        <field name="percent_projeccio" widget="progressbar"/>
+                </tree>
+              </field>
+            </record>
+<record model="ir.ui.view" id="cine.sessio_calendar_view">
+            <field name="name">sessio.calendar</field>
+            <field name="model">cine.sessio</field>
+            <field name="arch" type="xml">
+              <calendar string="Sessions" date_start="hora" date_delay="duracio" color="cine">
+                        <field name="sala"/>
+                        <field name="pelicula"/>
+                        <field name="percent_projeccio"/>
+                </calendar>
+              </field>
+            </record>
+ <record model="ir.ui.view" id="cine.sessio_search_view">
+            <field name="name">sessio.search</field>
+            <field name="model">cine.sessio</field>
+            <field name="arch" type="xml">
+              <search>
+                        <field name="name"/>
+                        <field name="sala"/>
+                        <field name="hora"/>
+                        <field name="dia"/>
+			<filter name="group_by_dia" string="Group by day" context="{'group_by': 'dia'}"/>
+                        <field name="pelicula"/>
+			<filter name="hui" string="Today sessions" domain="[('dia', '=', time.strftime('%Y-%m-%d'))]"/>
+                        <field name="projeccio"/>
+                </search>
+              </field>
+            </record>
+  </data>
+</openerp>

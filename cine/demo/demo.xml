@@ -1,0 +1,15 @@
+<openerp>
+    <data>
+           <record id="cine1" model="cine.cine"> 
+             <field name="name">El punt</field> 
+             <field name="pais">69</field>
+             <field name="direccio">Alzira</field>
+           </record> 
+           <record id="cine2" model="cine.cine"> 
+             <field name="name">Kinepolis</field> 
+             <field name="pais">69</field>
+             <field name="direccio">Paterna</field>
+           </record> 
+
+    </data>
+</openerp>

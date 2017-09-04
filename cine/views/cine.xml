@@ -1,0 +1,177 @@
+<openerp>
+  <data>
+     <record model="ir.ui.view" id="wizard_sessions_view">
+            <field name="name">wizard.sessions</field>
+            <field name="model">cine.wiz_sessions</field>
+            <field name="arch" type="xml">
+                <form string="Select Movies">
+                    <header>
+                     <br/><p>Recorda que, si sel·lecciones més pel·licules que sales, no totes tindran sessions.</p>
+                        <button name="action_pelis" type="object"
+                                string="Reset to movie selection"
+                                states="dia"/>
+                        <button name="action_dia" type="object"
+                                string="Select dia" states="pelis"
+                                class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+
+                    <group states="pelis">
+                        <field name="cine"/>
+                        <field name="pelicules"/>
+                    </group>
+                    <group states="dia">
+                        <field name="dia"/>
+                    </group>
+                    <footer>
+                        <button attrs="{'invisible':[('dia','=',False)]}" name="crear" type="object"  string="Launch" class="oe_highlight"/>
+                        
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+ 
+                </form>
+            </field>
+        </record>
+        <act_window id="launch_sessions_wizard"
+                    name="Create sessions"
+                    src_model="cine.cine"
+                    res_model="cine.wiz_sessions"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"/>
+
+     <record model="ir.ui.view" id="wizard2_sessions_view">
+            <field name="name">wizard2.sessions</field>
+            <field name="model">cine.wiz_sessions2</field>
+            <field name="arch" type="xml">
+                <form string="Select Movies">
+
+                        <field name="cine"/>
+                        <field name="sala" domain="[('cine','=',cine)]"/>
+                        <field name="pelicula"/>
+                        <field name="hora_inici"/>
+                        <field name="sessions">
+			<tree><field name="name"/><field name="hora"/><field name="pelicula"/></tree>
+			</field>
+                    <footer>
+                        <button name="crear" type="object"  string="Add" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cerrar"/>
+                    </footer>
+ 
+                </form>
+            </field>
+        </record>
+        <act_window id="launch_sessions_wizard2"
+                    name="Create sessions"
+                    src_model="cine.cine"
+                    res_model="cine.wiz_sessions2"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"/>
+
+ <record model="ir.ui.view" id="cine.cine_form_view">
+            <field name="name">cine.form</field>
+            <field name="model">cine.cine</field>
+            <field name="arch" type="xml">
+              <form string="Cine Form">
+               <header>
+ <button name="%(launch_sessions_wizard)d" type="action" string="Create Sessions" class="oe_highlight" />
+ <button name="%(launch_sessions_wizard2)d" type="action" string="Create Sessions2" class="oe_highlight" />
+		</header>
+
+                <sheet>
+                  <notebook>
+                    <page string="Data">
+                      <group string="Main Data">
+                        <field name="name"/>
+                        <field name="pais"/>
+                        <field name="direccio"/>
+                      </group>
+                    </page>
+                    <page string="Details">
+                      <group string="Description">
+                        <field name="description"/>
+                      </group>
+                      <group string="Employees">
+                        <field name="empleats"/>
+                      </group>
+                      </page>
+                    <page string="Theaters">
+                      <group string="Sales">
+                        <field name="sales" context="{'default_cine':active_id}"/>
+                      </group>
+                      </page>
+                    <page string="Billboard">
+                      <group string="Billboard">
+                        <field name="en_cartell" mode="kanban">
+			<kanban>
+                           <templates>
+                    		<t t-name="kanban-box">
+                            		<div>
+                               		 <a type="open">
+                                    		<img class="oe_kanban_image"  t-att-src="kanban_image('cine.pelicula', 'poster', record.id.value)" style="width:100px;"/>
+                                </a>
+                                <div t-attf-class="oe_kanban_content">
+                                    <h4>
+                                        <a type="open">
+                                            <field name="name"></field>
+                                        </a>
+                                    </h4>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+			</field>
+                        <field name="sessions"/>
+                        <field name="projeccio" mode="kanban">
+
+			<kanban>
+                           <templates>
+                    		<t t-name="kanban-box">
+                            		<div>
+                               		 <a type="open">
+                                    		<img class="oe_kanban_image"  t-att-src="kanban_image('cine.sessio', 'pelicula_poster', record.id.value)" style="width:100px;"/>
+                                </a>
+                                <div t-attf-class="oe_kanban_content">
+                                    <h4>
+                                        <a type="open">
+                                            <field name="name"></field>
+                                        </a>
+                                            <field name="entrades" widget="x2many_counter"></field>
+
+ <field name="percent_projeccio" widget="gauge" style="width:150px; height: 110px;" options="{'levelcolors': ['#a9d70b', '#f9c802', '#ff0000'], 'action_jump': '357'}"/>
+                                            
+                                    </h4>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+			</field>
+                      </group>
+                      </page>
+                    </notebook>
+                  </sheet>
+                </form>
+              </field>
+            </record>
+ <record model="ir.ui.view" id="cine.cine_tree_view">
+            <field name="name">cine.tree</field>
+            <field name="model">cine.cine</field>
+            <field name="arch" type="xml">
+              <tree>
+                        <field name="name"/>
+                        <field name="pais"/>
+                        <field name="direccio"/>
+                        <field name="description"/>
+                        <field name="empleats"/>
+                </tree>
+              </field>
+            </record>
+
+
+
+  </data>
+</openerp>

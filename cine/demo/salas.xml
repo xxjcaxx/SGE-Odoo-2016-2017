@@ -1,0 +1,14 @@
+<openerp><data>
+<record id="sala_cine1_1" model="cine.sala"><field name="name">Sala cine1 1</field><field name="cine" ref="cine1"></field></record>
+<record id="sala_cine1_2" model="cine.sala"><field name="name">Sala cine1 2</field><field name="cine" ref="cine1"></field></record>
+<record id="sala_cine1_3" model="cine.sala"><field name="name">Sala cine1 3</field><field name="cine" ref="cine1"></field></record>
+<record id="sala_cine1_4" model="cine.sala"><field name="name">Sala cine1 4</field><field name="cine" ref="cine1"></field></record>
+<record id="sala_cine1_5" model="cine.sala"><field name="name">Sala cine1 5</field><field name="cine" ref="cine1"></field></record>
+<record id="sala_cine1_6" model="cine.sala"><field name="name">Sala cine1 6</field><field name="cine" ref="cine1"></field></record>
+<record id="sala_cine2_1" model="cine.sala"><field name="name">Sala cine2 1</field><field name="cine" ref="cine2"></field></record>
+<record id="sala_cine2_2" model="cine.sala"><field name="name">Sala cine2 2</field><field name="cine" ref="cine2"></field></record>
+<record id="sala_cine2_3" model="cine.sala"><field name="name">Sala cine2 3</field><field name="cine" ref="cine2"></field></record>
+<record id="sala_cine2_4" model="cine.sala"><field name="name">Sala cine2 4</field><field name="cine" ref="cine2"></field></record>
+<record id="sala_cine2_5" model="cine.sala"><field name="name">Sala cine2 5</field><field name="cine" ref="cine2"></field></record>
+<record id="sala_cine2_6" model="cine.sala"><field name="name">Sala cine2 6</field><field name="cine" ref="cine2"></field></record>
+</data></openerp>

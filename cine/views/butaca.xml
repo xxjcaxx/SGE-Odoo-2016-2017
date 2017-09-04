@@ -1,0 +1,39 @@
+<openerp>
+  <data>
+
+
+ <record model="ir.ui.view" id="cine.butaca_form_view">
+            <field name="name">butaca.form</field>
+            <field name="model">cine.butaca</field>
+            <field name="arch" type="xml">
+              <form string="Butaca Form">
+                <sheet>
+                  <notebook>
+                    <page string="Data">
+                      <group string="Main Data">
+                       <field name="name"/> 
+                        <field name="fila"/>
+                        <field name="butaca"/>
+                        <field name="sala"/>
+
+                      </group>
+                    </page>
+                    </notebook>
+                  </sheet>
+                </form>
+              </field>
+            </record>
+ <record model="ir.ui.view" id="cine.butaca_tree_view">
+            <field name="name">butaca.tree</field>
+            <field name="model">cine.butaca</field>
+            <field name="arch" type="xml">
+              <tree>
+                        <field name="name"/>
+                        <field name="fila"/>
+                        <field name="butaca"/>
+                        <field name="sala"/>
+                </tree>
+              </field>
+            </record>
+  </data>
+</openerp>

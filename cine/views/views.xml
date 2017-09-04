@@ -1,0 +1,50 @@
+<openerp>
+  <data>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cine.cine_action_window">
+      <field name="name">cine window</field>
+      <field name="res_model">cine.cine</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="cine.sala_action_window">
+      <field name="name">cine window</field>
+      <field name="res_model">cine.sala</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="cine.sessio_action_window">
+      <field name="name">cine window</field>
+      <field name="res_model">cine.sessio</field>
+      <field name="view_mode">tree,form,calendar</field>
+    </record>
+    <record model="ir.actions.act_window" id="cine.pelicula_action_window">
+      <field name="name">cine window</field>
+      <field name="res_model">cine.pelicula</field>
+      <field name="view_mode">tree,form,kanban</field>
+    </record>
+    <record model="ir.actions.act_window" id="cine.butaca_action_window">
+      <field name="name">cine window</field>
+      <field name="res_model">cine.butaca</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="cine.entrada_action_window">
+      <field name="name">cine window</field>
+      <field name="res_model">cine.entrada</field>
+      <field name="view_mode">tree,form,graph</field>
+<field name="context">{'search_default_nopasades':1,'graph_mode':'line'}</field>
+    </record>
+
+
+    <!-- Top menu item -->
+    <menuitem name="Cinema" id="cine.menu_root"/>
+    <!-- menu categories -->
+    <menuitem name="Management" id="cine.menu_1" parent="cine.menu_root"/>
+    <!-- actions -->
+    <menuitem name="Cinemas" id="cine.menu_1_list" parent="cine.menu_1"  action="cine.cine_action_window"/>
+    <menuitem name="Theaters" id="cine.menu_2_list" parent="cine.menu_1"  action="cine.sala_action_window"/>
+    <menuitem name="Sessions" id="cine.menu_3_list" parent="cine.menu_1"  action="cine.sessio_action_window"/>
+    <menuitem name="Movies" id="cine.menu_4_list" parent="cine.menu_1"  action="cine.pelicula_action_window"/>
+    <menuitem name="Seats" id="cine.menu_5_list" parent="cine.menu_1"  action="cine.butaca_action_window"/>
+    <menuitem name="Tickets" id="cine.menu_6_list" parent="cine.menu_1"  action="cine.entrada_action_window"/>
+  </data>
+</openerp>
